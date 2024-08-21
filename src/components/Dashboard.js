@@ -5,6 +5,7 @@ import Statistics from './Statistics'
 import PieChart from './PieChart'
 import BarChart from './BarChart'
 import axios from 'axios'
+import API_BASE_URL from '../config';
 
 const Dashboard = () => {
   const [month, setMonth] = useState('March'); // Default to March
@@ -18,7 +19,7 @@ const Dashboard = () => {
     // Fetch statistics data whenever the selected month changes
     const fetchStatistics = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/statistics', {
+        const response = await axios.get(`${API_BASE_URL}/statistics`, {
           params: { month },
         });
         setStatistics({

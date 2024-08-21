@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -23,7 +24,7 @@ const BarChart = ({ month }) => {
     if (month) {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:3002/bar-chart`, {
+          const response = await axios.get(`${API_BASE_URL}/bar-chart`, {
             params: { month },
           });
           const data = response.data;

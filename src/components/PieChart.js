@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -19,7 +20,7 @@ const PieChart = ({ month }) => {
   useEffect(() => {
     const fetchPieChartData = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/pie-chart', {
+        const response = await axios.get(`${API_BASE_URL}/pie-chart`, {
           params: { month },
         });
 
